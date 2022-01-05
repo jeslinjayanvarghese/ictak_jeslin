@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as AOS from 'aos';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { LandingService } from 'src/app/landing.service';
 
 
 
@@ -12,42 +14,18 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 export class CardsComponent implements OnInit {
-  dynamicSlides = [
-    {
-      id: 1,
-      src:'https://i.pinimg.com/564x/20/c4/e3/20c4e382faedbb1e917c772dd62c9fd2.jpg',
-      alt:'Mean Stack',
-      title:'Side 1'
-    },
-    {
-      id: 2,
-      src:'',
-      alt:'Mern Stack',
-      title:'Side 2'
-    },
-    {
-      id: 3,
-      src:'https://miro.medium.com/max/1400/1*6l15igU_z2Uj15SzOGx1Iw.png',
-      alt:'Data Science',
-      title:'Side 3'
-    },
-    {
-      id: 4,
-      src:'https://hackr.io/blog/artificial-intelligence-courses/thumbnail/large',
-      alt:'AI',
-      title:'Side 4'
-    },
-    {
-      id: 5,
-      src:'https://5.imimg.com/data5/ME/DN/GLADMIN-56099733/training-on-software-testing-500x500.png',
-      alt:'Software Testing',
-      title:'Side 5'
-    }
-  ]
 
-  constructor() { }
+  courses:any=[];
+
+
+  constructor(private landingService: LandingService,private router: Router) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+    this.landingService.getCourses().subscribe((data: any)=>{
+      console.log(data);
+      this.courses=data;
+      }) 
+
   }
 
  customOptions: OwlOptions = {

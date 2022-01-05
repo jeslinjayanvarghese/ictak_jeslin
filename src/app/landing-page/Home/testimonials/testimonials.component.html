@@ -39,7 +39,7 @@
       
 <owl-carousel-o [options]="customOptions">
 
-  <ng-container *ngFor="let slide of dynamicSlides">
+  <ng-container *ngFor="let i of testimonials">
     <ng-template carouselSlide>
       <!-- <img [src]="slide.src" [alt]="slide.alt" [title]="slide.title"> -->
       <div class="mt-8">
@@ -53,11 +53,10 @@
             </div>
           </div>
           <div class="card-body text-center pb-0">
-            <h4 class="mb-0">Simon Lauren</h4>
-            <p>@simonlaurent</p>
+            <h4 class="mb-0">{{ i.name }}</h4>
+            <p>{{ i.designation }}</p>
             <p class="mt-2">
-              The networking at Web Summit is like no other European tech
-              conference. Everything is amazing.
+              {{ i.testimony }}
             </p>
           </div>
           <div class="card-footer text-center pt-2">

@@ -10,13 +10,17 @@ import { LandingService } from 'src/app/landing.service';
 export class HeaderComponent implements OnInit {
   courses:any=[];
   events:any='';
+
   constructor(private router:Router,private landingService: LandingService) { }
 
+  //courses
   ngOnInit(): void {
     this.landingService.getCourses().subscribe((data: any)=>{
       this.courses=data;
       console.log(this.courses);
       }) 
+
+  //events
     this.landingService.getEvent().subscribe((data: any)=>{
       this.events=data;
       }) 
